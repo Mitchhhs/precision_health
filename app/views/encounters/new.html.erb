@@ -1,0 +1,84 @@
+<div class="page-header">
+  <h3>Physician Dashboard</h3>
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+
+<div class="panel panel-info" >
+  <div class="panel-heading">
+    <div class="panel-title">Most Popular</div>
+  </div>
+
+<div style="padding-top:20px" class="panel-body" >
+  <div class="col-md-6 col-md-offset-0">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Physicians
+          </div>
+          <div class="chart-stage">
+
+          <%=  bar_chart Encounter.where(bundle_name: "Major Joint Replacement").group(:attending_physician_description).order('count_all DESC').limit(15).count %>
+
+
+         </div>
+        </div>
+      </div>
+
+  <div class="col-md-6 col-md-offset-0">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Facilities
+          </div>
+          <div class="chart-stage">
+
+          <%=  bar_chart Encounter.where(bundle_name: "Major Joint Replacement").group(:facility_name).order('count_all DESC').limit(15).count %>
+
+
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+<div class="panel panel-success" >
+  <div class="panel-heading">
+    <div class="panel-title">Your Performance</div>
+  </div>
+
+<div style="padding-top:20px" class="panel-body" >
+  <div class="col-md-6 col-md-offset-0">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            % Readmissions by Month
+          </div>
+          <div class="chart-stage">
+
+          <%=  line_chart Encounter.where(attending_physician_description: "EMERSON ROGER").group_by{ |t| t.discharge_date.beginning_of_month }.count %>
+
+
+         </div>
+        </div>
+      </div>
+
+  <div class="col-md-6 col-md-offset-0">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Facilities
+          </div>
+          <div class="chart-stage">
+
+          <%=  bar_chart Encounter.where(bundle_name: "Major Joint Replacement").group(:facility_name).order('count_all DESC').limit(15).count %>
+
+
+          </div>
+        </div>
+      </div>
+
+
+</div>
+</div>
+
+
+  </div>
+</div>

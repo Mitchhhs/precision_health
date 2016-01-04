@@ -1,0 +1,157 @@
+<div class="page-header">
+  <h3>Encounter #<%= @encounter.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Obs exp readmit difference</dt>
+      <dd><%= @encounter.obs_exp_readmit_difference %></dd>
+
+      <dt>Readmit exp</dt>
+      <dd><%= @encounter.readmit_exp %></dd>
+
+      <dt>Obs exp cost difference</dt>
+      <dd><%= @encounter.obs_exp_cost_difference %></dd>
+
+      <dt>Expected direct cost</dt>
+      <dd><%= @encounter.expected_direct_cost %></dd>
+
+      <dt>Risk adjusted cost</dt>
+      <dd><%= @encounter.risk_adjusted_cost %></dd>
+
+      <dt>Average bundle cost</dt>
+      <dd><%= @encounter.average_bundle_cost %></dd>
+
+      <dt>Risk score</dt>
+      <dd><%= @encounter.risk_score %></dd>
+
+      <dt>Combined bundle icd9</dt>
+      <dd><%= @encounter.combined_bundle_icd9 %></dd>
+
+      <dt>Bundle name</dt>
+      <dd><%= @encounter.bundle_name %></dd>
+
+      <dt>Readmit days from discharge</dt>
+      <dd><%= @encounter.readmit_days_from_discharge %></dd>
+
+      <dt>Readmission</dt>
+      <dd><%= @encounter.readmission %></dd>
+
+      <dt>Had readmission</dt>
+      <dd><%= @encounter.had_readmission %></dd>
+
+      <dt>Total ip visits</dt>
+      <dd><%= @encounter.total_ip_visits %></dd>
+
+      <dt>Uniqueid</dt>
+      <dd><%= @encounter.uniqueid %></dd>
+
+      <dt>Contribution margin</dt>
+      <dd><%= @encounter.contribution_margin %></dd>
+
+      <dt>Cases</dt>
+      <dd><%= @encounter.cases %></dd>
+
+      <dt>Direct costs</dt>
+      <dd><%= @encounter.direct_costs %></dd>
+
+      <dt>Fixed costs</dt>
+      <dd><%= @encounter.fixed_costs %></dd>
+
+      <dt>Actual payment</dt>
+      <dd><%= @encounter.actual_payment %></dd>
+
+      <dt>Total adjustment</dt>
+      <dd><%= @encounter.total_adjustment %></dd>
+
+      <dt>Total charges</dt>
+      <dd><%= @encounter.total_charges %></dd>
+
+      <dt>Payor group</dt>
+      <dd><%= @encounter.payor_group %></dd>
+
+      <dt>Payor type</dt>
+      <dd><%= @encounter.payor_type %></dd>
+
+      <dt>Discharge disposition</dt>
+      <dd><%= @encounter.discharge_disposition %></dd>
+
+      <dt>Discharge date</dt>
+      <dd><%= @encounter.discharge_date %></dd>
+
+      <dt>Admit date</dt>
+      <dd><%= @encounter.admit_date %></dd>
+
+      <dt>Facility name</dt>
+      <dd><%= @encounter.facility_name %></dd>
+
+      <dt>Attending physician description</dt>
+      <dd><%= @encounter.attending_physician_description %></dd>
+
+      <dt>Attending physician</dt>
+      <dd><%= @encounter.attending_physician_id %></dd>
+
+      <dt>Admitting physician description</dt>
+      <dd><%= @encounter.admitting_physician_description %></dd>
+
+      <dt>Admitting physician</dt>
+      <dd><%= @encounter.admitting_physician_id %></dd>
+
+      <dt>Primary icd9 poa</dt>
+      <dd><%= @encounter.primary_icd9_poa %></dd>
+
+      <dt>Primary icd9 description</dt>
+      <dd><%= @encounter.primary_icd9_description %></dd>
+
+      <dt>Primary icd9</dt>
+      <dd><%= @encounter.primary_icd9 %></dd>
+
+      <dt>Msdrg description</dt>
+      <dd><%= @encounter.msdrg_description %></dd>
+
+      <dt>Msdrg</dt>
+      <dd><%= @encounter.msdrg %></dd>
+
+      <dt>Icd9 procedure</dt>
+      <dd><%= @encounter.icd9_procedure %></dd>
+
+      <dt>Admit source</dt>
+      <dd><%= @encounter.admit_source %></dd>
+
+      <dt>Length of stay</dt>
+      <dd><%= @encounter.length_of_stay %></dd>
+
+      <dt>Zip code</dt>
+      <dd><%= @encounter.zip_code %></dd>
+
+      <dt>Gender</dt>
+      <dd><%= @encounter.gender %></dd>
+
+      <dt>Age</dt>
+      <dd><%= @encounter.age %></dd>
+
+      <dt>Birth date</dt>
+      <dd><%= @encounter.birth_date %></dd>
+
+      <dt>Standard</dt>
+      <dd><%= @encounter.standard_id %></dd>
+
+      <dt>Patient account</dt>
+      <dd><%= @encounter.patient_account %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/encounters" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/encounters/<%= @encounter.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_encounter/<%= @encounter.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

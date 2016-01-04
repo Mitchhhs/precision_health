@@ -1,0 +1,299 @@
+@function map-fetch($map, $keys) {
+  $key: nth($keys, 1);
+  $length: length($keys);
+  $value: map-get($map, $key);
+  @if ($length > 1) {
+    $rest: ();
+    @for $i from 2 through $length {
+      $rest: append($rest, nth($keys, $i))
+    }
+    @return map-fetch($value, $rest)
+  } @else {
+    @return $value;
+  }
+}
+
+@mixin sch($map, $tree) {
+  @each $theme in map-keys(map-get($map, $tree)) {
+    $color: map-fetch($map, $tree $theme color);
+    $font: map-fetch($map, $tree $theme font);
+    $cursor: map-fetch($map, $tree $theme cursor);
+    $badge: map-fetch($map, $tree $theme badge);
+
+    .row.#{$theme} {
+      cursor: #{$cursor};
+
+      * {
+        color: $color;
+        cursor: #{$cursor};
+      }
+
+      .title {
+        font-weight: $font;
+        &:before {
+          content: '#{$theme}';
+          font-weight: $badge;
+          background-color: $color;
+          @extend %badge;
+        }
+      }
+    }
+  }
+}
+
+@mixin media($break, $limit: '') {
+  @if($limit == '') {
+    $limit: max;
+  }
+  @media (#{$limit}-width: $break) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+  padding: 2em;
+}
+
+$blue: #0B7DCF;
+$main-color: darken($blue, 25%);
+$light: #A5CFEE;
+$lighter: lighten($light, 12.5%);
+$mid: darken($light, 35%);
+$break: 500px;
+$padding: 1rem;
+$green: #7AC558;
+$red: lighten(crimson, 10%);
+
+$config: (
+  themes: (
+    urgent: (
+      color: $green,
+      badge: 400
+    ),
+    rejected: (
+      color: $red,
+      font: 400,
+      cursor: 'not-allowed !important'
+    ),
+    published: (
+      color: $light,
+      font: 400,
+      cursor: 'default !important'
+    )
+  )
+);
+
+%title {
+  font-weight: 700;
+  color: $main-color;
+  padding: $padding * 1.5 $padding;
+  @include media($break) {
+    padding: $padding;
+  }
+}
+
+%copy {
+  color: $mid;
+}
+
+%uppercase {
+  text-transform: uppercase;
+  font-size: .85em;
+  color: $mid;
+}
+
+%table-head {
+  color: $light;
+  font-size: 1.25em;
+}
+
+%dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 100%;
+  @include media($break + 1, min) {
+    margin-top: -4px;
+  }
+}
+
+%center-to-left {
+  text-align: center;
+  @include media ($break) {
+    text-align: left;
+  }
+}
+
+%badge {
+  text-transform: uppercase;
+  margin-right: .5em;
+  font-size: 80%;
+  color: #fff;
+  padding: 1px 3px;
+  border-radius: 3px;
+}
+
+.icon-seen,
+.icon-urgent {
+  font-size: 1.25em;
+}
+
+.icon-seen {
+  color: $main-color;
+}
+
+.row {
+  border-bottom: 1px solid $lighter;
+  position: relative;
+
+  * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .title {
+    width: 50%;
+    cursor: pointer;
+    @extend %title;
+
+    @include media($break + 1, min) {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @include media($break) {
+      display: block;
+      width: 100%;
+      clear: left;
+    }
+  }
+
+  .meta-data {
+    width: 50%;
+
+    > * {
+      width: 25%;
+      padding: 0 $padding / 2;
+      cursor: pointer;
+
+      @include media($break) {
+        width: auto;
+        display: inline-block;
+      }
+    }
+
+    @include media($break) {
+      position: relative;
+      display: block;
+      width: 100%;
+      clear: left;
+      background-color: rgba($light, .10);
+      padding: $padding;
+    }
+
+    .col {
+      @include media($break) {
+        &:before {
+          display: block;
+          text-transform: uppercase;
+          font-size: .7em;
+        }
+      }
+    }
+  }
+
+  .time {
+    @extend %copy;
+
+    @include media($break) {
+      &:before {content: 'Time';}
+    }
+  }
+
+  .zone {
+    @extend %uppercase, %center-to-left;
+
+    @include media($break) {
+      font-size: 1em;
+      &:before {content: 'Zone';}
+    }
+  }
+
+  .notes {
+    @extend %uppercase, %center-to-left;
+
+    @include media($break) {
+      &:before {content: 'Notes';}
+    }
+
+    .yes {
+      @extend %dot;
+      background-color: $green;
+    }
+
+    .no {
+      @extend %dot;
+      background-color: rgba(black, .15);
+    }
+  }
+
+  .status {
+    @extend %center-to-left;
+
+    @include media($break) {
+      float: right;
+      position: absolute;
+      top: 50%;
+      right: $padding / 2;
+      margin-top: -.75em;
+
+      * {
+        font-size: 1.5em;
+      }
+    }
+  }
+}
+
+@include sch($config, themes);
+
+// Caption
+
+.row-hr {
+  background-color: lighten($light, 18%);
+
+  * {
+    display: inline-block;
+  }
+
+  .title,
+  .col {
+    @extend %table-head;
+  }
+
+  .title {
+    width: 50%;
+    padding: $padding;
+  }
+
+  .meta-data {
+    width: 50%;
+
+    * {
+      width: 25%;
+      padding: 0 $padding / 2;
+    }
+
+    @include media($break) {
+      display: none;
+    }
+  }
+
+  .notes, .status, .zone {
+    text-align: center;
+  }
+}

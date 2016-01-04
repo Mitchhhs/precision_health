@@ -1,0 +1,433 @@
+<!-- Validation failure messages -->
+<% if @encounter.errors.any? %>
+  <% @encounter.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Encounter #<%= @encounter.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_encounter/<%= @encounter.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for obs_exp_readmit_difference -->
+      <div class="form-group">
+        <label for="obs_exp_readmit_difference" class="control-label">
+          Obs exp readmit difference
+        </label>
+
+        <input type="text" id="obs_exp_readmit_difference" name="obs_exp_readmit_difference" placeholder="Obs exp readmit difference" class="form-control" value="<%= @encounter.obs_exp_readmit_difference %>">
+      </div>
+
+      <!-- Label and input for readmit_exp -->
+      <div class="form-group">
+        <label for="readmit_exp" class="control-label">
+          Readmit exp
+        </label>
+
+        <input type="text" id="readmit_exp" name="readmit_exp" placeholder="Readmit exp" class="form-control" value="<%= @encounter.readmit_exp %>">
+      </div>
+
+      <!-- Label and input for obs_exp_cost_difference -->
+      <div class="form-group">
+        <label for="obs_exp_cost_difference" class="control-label">
+          Obs exp cost difference
+        </label>
+
+        <input type="text" id="obs_exp_cost_difference" name="obs_exp_cost_difference" placeholder="Obs exp cost difference" class="form-control" value="<%= @encounter.obs_exp_cost_difference %>">
+      </div>
+
+      <!-- Label and input for expected_direct_cost -->
+      <div class="form-group">
+        <label for="expected_direct_cost" class="control-label">
+          Expected direct cost
+        </label>
+
+        <input type="text" id="expected_direct_cost" name="expected_direct_cost" placeholder="Expected direct cost" class="form-control" value="<%= @encounter.expected_direct_cost %>">
+      </div>
+
+      <!-- Label and input for risk_adjusted_cost -->
+      <div class="form-group">
+        <label for="risk_adjusted_cost" class="control-label">
+          Risk adjusted cost
+        </label>
+
+        <input type="text" id="risk_adjusted_cost" name="risk_adjusted_cost" placeholder="Risk adjusted cost" class="form-control" value="<%= @encounter.risk_adjusted_cost %>">
+      </div>
+
+      <!-- Label and input for average_bundle_cost -->
+      <div class="form-group">
+        <label for="average_bundle_cost" class="control-label">
+          Average bundle cost
+        </label>
+
+        <input type="text" id="average_bundle_cost" name="average_bundle_cost" placeholder="Average bundle cost" class="form-control" value="<%= @encounter.average_bundle_cost %>">
+      </div>
+
+      <!-- Label and input for risk_score -->
+      <div class="form-group">
+        <label for="risk_score" class="control-label">
+          Risk score
+        </label>
+
+        <input type="text" id="risk_score" name="risk_score" placeholder="Risk score" class="form-control" value="<%= @encounter.risk_score %>">
+      </div>
+
+      <!-- Label and input for combined_bundle_icd9 -->
+      <div class="form-group">
+        <label for="combined_bundle_icd9" class="control-label">
+          Combined bundle icd9
+        </label>
+
+        <input type="text" id="combined_bundle_icd9" name="combined_bundle_icd9" placeholder="Combined bundle icd9" class="form-control" value="<%= @encounter.combined_bundle_icd9 %>">
+      </div>
+
+      <!-- Label and input for bundle_name -->
+      <div class="form-group">
+        <label for="bundle_name" class="control-label">
+          Bundle name
+        </label>
+
+        <input type="text" id="bundle_name" name="bundle_name" placeholder="Bundle name" class="form-control" value="<%= @encounter.bundle_name %>">
+      </div>
+
+      <!-- Label and input for readmit_days_from_discharge -->
+      <div class="form-group">
+        <label for="readmit_days_from_discharge" class="control-label">
+          Readmit days from discharge
+        </label>
+
+        <input type="text" id="readmit_days_from_discharge" name="readmit_days_from_discharge" placeholder="Readmit days from discharge" class="form-control" value="<%= @encounter.readmit_days_from_discharge %>">
+      </div>
+
+      <!-- Label and input for readmission -->
+      <div class="form-group">
+        <label for="readmission" class="control-label">
+          Readmission
+        </label>
+
+        <input type="text" id="readmission" name="readmission" placeholder="Readmission" class="form-control" value="<%= @encounter.readmission %>">
+      </div>
+
+      <!-- Label and input for had_readmission -->
+      <div class="form-group">
+        <label for="had_readmission" class="control-label">
+          Had readmission
+        </label>
+
+        <input type="text" id="had_readmission" name="had_readmission" placeholder="Had readmission" class="form-control" value="<%= @encounter.had_readmission %>">
+      </div>
+
+      <!-- Label and input for total_ip_visits -->
+      <div class="form-group">
+        <label for="total_ip_visits" class="control-label">
+          Total ip visits
+        </label>
+
+        <input type="text" id="total_ip_visits" name="total_ip_visits" placeholder="Total ip visits" class="form-control" value="<%= @encounter.total_ip_visits %>">
+      </div>
+
+      <!-- Label and input for uniqueid -->
+      <div class="form-group">
+        <label for="uniqueid" class="control-label">
+          Uniqueid
+        </label>
+
+        <input type="text" id="uniqueid" name="uniqueid" placeholder="Uniqueid" class="form-control" value="<%= @encounter.uniqueid %>">
+      </div>
+
+      <!-- Label and input for contribution_margin -->
+      <div class="form-group">
+        <label for="contribution_margin" class="control-label">
+          Contribution margin
+        </label>
+
+        <input type="text" id="contribution_margin" name="contribution_margin" placeholder="Contribution margin" class="form-control" value="<%= @encounter.contribution_margin %>">
+      </div>
+
+      <!-- Label and input for cases -->
+      <div class="form-group">
+        <label for="cases" class="control-label">
+          Cases
+        </label>
+
+        <input type="text" id="cases" name="cases" placeholder="Cases" class="form-control" value="<%= @encounter.cases %>">
+      </div>
+
+      <!-- Label and input for direct_costs -->
+      <div class="form-group">
+        <label for="direct_costs" class="control-label">
+          Direct costs
+        </label>
+
+        <input type="text" id="direct_costs" name="direct_costs" placeholder="Direct costs" class="form-control" value="<%= @encounter.direct_costs %>">
+      </div>
+
+      <!-- Label and input for fixed_costs -->
+      <div class="form-group">
+        <label for="fixed_costs" class="control-label">
+          Fixed costs
+        </label>
+
+        <input type="text" id="fixed_costs" name="fixed_costs" placeholder="Fixed costs" class="form-control" value="<%= @encounter.fixed_costs %>">
+      </div>
+
+      <!-- Label and input for actual_payment -->
+      <div class="form-group">
+        <label for="actual_payment" class="control-label">
+          Actual payment
+        </label>
+
+        <input type="text" id="actual_payment" name="actual_payment" placeholder="Actual payment" class="form-control" value="<%= @encounter.actual_payment %>">
+      </div>
+
+      <!-- Label and input for total_adjustment -->
+      <div class="form-group">
+        <label for="total_adjustment" class="control-label">
+          Total adjustment
+        </label>
+
+        <input type="text" id="total_adjustment" name="total_adjustment" placeholder="Total adjustment" class="form-control" value="<%= @encounter.total_adjustment %>">
+      </div>
+
+      <!-- Label and input for total_charges -->
+      <div class="form-group">
+        <label for="total_charges" class="control-label">
+          Total charges
+        </label>
+
+        <input type="text" id="total_charges" name="total_charges" placeholder="Total charges" class="form-control" value="<%= @encounter.total_charges %>">
+      </div>
+
+      <!-- Label and input for payor_group -->
+      <div class="form-group">
+        <label for="payor_group" class="control-label">
+          Payor group
+        </label>
+
+        <input type="text" id="payor_group" name="payor_group" placeholder="Payor group" class="form-control" value="<%= @encounter.payor_group %>">
+      </div>
+
+      <!-- Label and input for payor_type -->
+      <div class="form-group">
+        <label for="payor_type" class="control-label">
+          Payor type
+        </label>
+
+        <input type="text" id="payor_type" name="payor_type" placeholder="Payor type" class="form-control" value="<%= @encounter.payor_type %>">
+      </div>
+
+      <!-- Label and input for discharge_disposition -->
+      <div class="form-group">
+        <label for="discharge_disposition" class="control-label">
+          Discharge disposition
+        </label>
+
+        <input type="text" id="discharge_disposition" name="discharge_disposition" placeholder="Discharge disposition" class="form-control" value="<%= @encounter.discharge_disposition %>">
+      </div>
+
+      <!-- Label and input for discharge_date -->
+      <div class="form-group">
+        <label for="discharge_date" class="control-label">
+          Discharge date
+        </label>
+
+        <input type="text" id="discharge_date" name="discharge_date" placeholder="Discharge date" class="form-control" value="<%= @encounter.discharge_date %>">
+      </div>
+
+      <!-- Label and input for admit_date -->
+      <div class="form-group">
+        <label for="admit_date" class="control-label">
+          Admit date
+        </label>
+
+        <input type="text" id="admit_date" name="admit_date" placeholder="Admit date" class="form-control" value="<%= @encounter.admit_date %>">
+      </div>
+
+      <!-- Label and input for facility_name -->
+      <div class="form-group">
+        <label for="facility_name" class="control-label">
+          Facility name
+        </label>
+
+        <input type="text" id="facility_name" name="facility_name" placeholder="Facility name" class="form-control" value="<%= @encounter.facility_name %>">
+      </div>
+
+      <!-- Label and input for attending_physician_description -->
+      <div class="form-group">
+        <label for="attending_physician_description" class="control-label">
+          Attending physician description
+        </label>
+
+        <input type="text" id="attending_physician_description" name="attending_physician_description" placeholder="Attending physician description" class="form-control" value="<%= @encounter.attending_physician_description %>">
+      </div>
+
+      <!-- Label and input for attending_physician_id -->
+      <div class="form-group">
+        <label for="attending_physician_id" class="control-label">
+          Attending physician
+        </label>
+
+        <input type="text" id="attending_physician_id" name="attending_physician_id" placeholder="Attending physician" class="form-control" value="<%= @encounter.attending_physician_id %>">
+      </div>
+
+      <!-- Label and input for admitting_physician_description -->
+      <div class="form-group">
+        <label for="admitting_physician_description" class="control-label">
+          Admitting physician description
+        </label>
+
+        <input type="text" id="admitting_physician_description" name="admitting_physician_description" placeholder="Admitting physician description" class="form-control" value="<%= @encounter.admitting_physician_description %>">
+      </div>
+
+      <!-- Label and input for admitting_physician_id -->
+      <div class="form-group">
+        <label for="admitting_physician_id" class="control-label">
+          Admitting physician
+        </label>
+
+        <input type="text" id="admitting_physician_id" name="admitting_physician_id" placeholder="Admitting physician" class="form-control" value="<%= @encounter.admitting_physician_id %>">
+      </div>
+
+      <!-- Label and input for primary_icd9_poa -->
+      <div class="form-group">
+        <label for="primary_icd9_poa" class="control-label">
+          Primary icd9 poa
+        </label>
+
+        <input type="text" id="primary_icd9_poa" name="primary_icd9_poa" placeholder="Primary icd9 poa" class="form-control" value="<%= @encounter.primary_icd9_poa %>">
+      </div>
+
+      <!-- Label and input for primary_icd9_description -->
+      <div class="form-group">
+        <label for="primary_icd9_description" class="control-label">
+          Primary icd9 description
+        </label>
+
+        <input type="text" id="primary_icd9_description" name="primary_icd9_description" placeholder="Primary icd9 description" class="form-control" value="<%= @encounter.primary_icd9_description %>">
+      </div>
+
+      <!-- Label and input for primary_icd9 -->
+      <div class="form-group">
+        <label for="primary_icd9" class="control-label">
+          Primary icd9
+        </label>
+
+        <input type="text" id="primary_icd9" name="primary_icd9" placeholder="Primary icd9" class="form-control" value="<%= @encounter.primary_icd9 %>">
+      </div>
+
+      <!-- Label and input for msdrg_description -->
+      <div class="form-group">
+        <label for="msdrg_description" class="control-label">
+          Msdrg description
+        </label>
+
+        <input type="text" id="msdrg_description" name="msdrg_description" placeholder="Msdrg description" class="form-control" value="<%= @encounter.msdrg_description %>">
+      </div>
+
+      <!-- Label and input for msdrg -->
+      <div class="form-group">
+        <label for="msdrg" class="control-label">
+          Msdrg
+        </label>
+
+        <input type="text" id="msdrg" name="msdrg" placeholder="Msdrg" class="form-control" value="<%= @encounter.msdrg %>">
+      </div>
+
+      <!-- Label and input for icd9_procedure -->
+      <div class="form-group">
+        <label for="icd9_procedure" class="control-label">
+          Icd9 procedure
+        </label>
+
+        <input type="text" id="icd9_procedure" name="icd9_procedure" placeholder="Icd9 procedure" class="form-control" value="<%= @encounter.icd9_procedure %>">
+      </div>
+
+      <!-- Label and input for admit_source -->
+      <div class="form-group">
+        <label for="admit_source" class="control-label">
+          Admit source
+        </label>
+
+        <input type="text" id="admit_source" name="admit_source" placeholder="Admit source" class="form-control" value="<%= @encounter.admit_source %>">
+      </div>
+
+      <!-- Label and input for length_of_stay -->
+      <div class="form-group">
+        <label for="length_of_stay" class="control-label">
+          Length of stay
+        </label>
+
+        <input type="text" id="length_of_stay" name="length_of_stay" placeholder="Length of stay" class="form-control" value="<%= @encounter.length_of_stay %>">
+      </div>
+
+      <!-- Label and input for zip_code -->
+      <div class="form-group">
+        <label for="zip_code" class="control-label">
+          Zip code
+        </label>
+
+        <input type="text" id="zip_code" name="zip_code" placeholder="Zip code" class="form-control" value="<%= @encounter.zip_code %>">
+      </div>
+
+      <!-- Label and input for gender -->
+      <div class="form-group">
+        <label for="gender" class="control-label">
+          Gender
+        </label>
+
+        <input type="text" id="gender" name="gender" placeholder="Gender" class="form-control" value="<%= @encounter.gender %>">
+      </div>
+
+      <!-- Label and input for age -->
+      <div class="form-group">
+        <label for="age" class="control-label">
+          Age
+        </label>
+
+        <input type="text" id="age" name="age" placeholder="Age" class="form-control" value="<%= @encounter.age %>">
+      </div>
+
+      <!-- Label and input for birth_date -->
+      <div class="form-group">
+        <label for="birth_date" class="control-label">
+          Birth date
+        </label>
+
+        <input type="text" id="birth_date" name="birth_date" placeholder="Birth date" class="form-control" value="<%= @encounter.birth_date %>">
+      </div>
+
+      <!-- Label and input for standard_id -->
+      <div class="form-group">
+        <label for="standard_id" class="control-label">
+          Standard
+        </label>
+
+        <input type="text" id="standard_id" name="standard_id" placeholder="Standard" class="form-control" value="<%= @encounter.standard_id %>">
+      </div>
+
+      <!-- Label and input for patient_account -->
+      <div class="form-group">
+        <label for="patient_account" class="control-label">
+          Patient account
+        </label>
+
+        <input type="text" id="patient_account" name="patient_account" placeholder="Patient account" class="form-control" value="<%= @encounter.patient_account %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Encounter
+      </button>
+      or
+      <a href="/encounters/<%= @encounter.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="page-header">
+  <h1>
+    Encounters
+    <a href="/encounters/new" class="btn btn-lg btn-success">New Encounter</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Obs exp readmit difference</th>
+        <th>Readmit exp</th>
+        <th>Obs exp cost difference</th>
+        <th>Expected direct cost</th>
+        <th>Risk adjusted cost</th>
+        <th>Average bundle cost</th>
+        <th>Risk score</th>
+        <th>Combined bundle icd9</th>
+        <th>Bundle name</th>
+        <th>Readmit days from discharge</th>
+        <th>Readmission</th>
+        <th>Had readmission</th>
+        <th>Total ip visits</th>
+        <th>Uniqueid</th>
+        <th>Contribution margin</th>
+        <th>Cases</th>
+        <th>Direct costs</th>
+        <th>Fixed costs</th>
+        <th>Actual payment</th>
+        <th>Total adjustment</th>
+        <th>Total charges</th>
+        <th>Payor group</th>
+        <th>Payor type</th>
+        <th>Discharge disposition</th>
+        <th>Discharge date</th>
+        <th>Admit date</th>
+        <th>Facility name</th>
+        <th>Attending physician description</th>
+        <th>Attending physician</th>
+        <th>Admitting physician description</th>
+        <th>Admitting physician</th>
+        <th>Primary icd9 poa</th>
+        <th>Primary icd9 description</th>
+        <th>Primary icd9</th>
+        <th>Msdrg description</th>
+        <th>Msdrg</th>
+        <th>Icd9 procedure</th>
+        <th>Admit source</th>
+        <th>Length of stay</th>
+        <th>Zip code</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Birth date</th>
+        <th>Standard</th>
+        <th>Patient account</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @encounters.each do |encounter| %>
+      <tr>
+        <td><%= encounter.obs_exp_readmit_difference %></td>
+        <td><%= encounter.readmit_exp %></td>
+        <td><%= encounter.obs_exp_cost_difference %></td>
+        <td><%= encounter.expected_direct_cost %></td>
+        <td><%= encounter.risk_adjusted_cost %></td>
+        <td><%= encounter.average_bundle_cost %></td>
+        <td><%= encounter.risk_score %></td>
+        <td><%= encounter.combined_bundle_icd9 %></td>
+        <td><%= encounter.bundle_name %></td>
+        <td><%= encounter.readmit_days_from_discharge %></td>
+        <td><%= encounter.readmission %></td>
+        <td><%= encounter.had_readmission %></td>
+        <td><%= encounter.total_ip_visits %></td>
+        <td><%= encounter.uniqueid %></td>
+        <td><%= encounter.contribution_margin %></td>
+        <td><%= encounter.cases %></td>
+        <td><%= encounter.direct_costs %></td>
+        <td><%= encounter.fixed_costs %></td>
+        <td><%= encounter.actual_payment %></td>
+        <td><%= encounter.total_adjustment %></td>
+        <td><%= encounter.total_charges %></td>
+        <td><%= encounter.payor_group %></td>
+        <td><%= encounter.payor_type %></td>
+        <td><%= encounter.discharge_disposition %></td>
+        <td><%= encounter.discharge_date %></td>
+        <td><%= encounter.admit_date %></td>
+        <td><%= encounter.facility_name %></td>
+        <td><%= encounter.attending_physician_description %></td>
+        <td><%= encounter.attending_physician_id %></td>
+        <td><%= encounter.admitting_physician_description %></td>
+        <td><%= encounter.admitting_physician_id %></td>
+        <td><%= encounter.primary_icd9_poa %></td>
+        <td><%= encounter.primary_icd9_description %></td>
+        <td><%= encounter.primary_icd9 %></td>
+        <td><%= encounter.msdrg_description %></td>
+        <td><%= encounter.msdrg %></td>
+        <td><%= encounter.icd9_procedure %></td>
+        <td><%= encounter.admit_source %></td>
+        <td><%= encounter.length_of_stay %></td>
+        <td><%= encounter.zip_code %></td>
+        <td><%= encounter.gender %></td>
+        <td><%= encounter.age %></td>
+        <td><%= encounter.birth_date %></td>
+        <td><%= encounter.standard_id %></td>
+        <td><%= encounter.patient_account %></td>
+        <td>
+          <a href="/encounters/<%= encounter.id %>" class="btn btn-primary">Show</a>
+          <a href="/encounters/<%= encounter.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_encounter/<%= encounter.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
